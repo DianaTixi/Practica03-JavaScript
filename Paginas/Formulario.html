@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="Validar campos del Formulario">
+    <title>Formulario</title>
+
+    <script src="../JavaScript/formulario.js" type="text/javascript" >
+    
+    </script>
+</head>
+<body>  
+    <div>
+        <fieldset>
+            <h2>
+                Formulario - Validar Campos
+            </h2>
+            <form id="validationForm">
+                <label>Cedula:    </label><input type="text"  id="ced" name="ced" maxlength="10" minlength="10" required onkeyup="validar()" onblur="validar()">
+                <div id="message1" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Nombres:   </label><input type="text" id="nom" name="nom" placeholder="Escriba los 2 nombres" onkeypress="return soloLetras(event)" >
+                <div id="message2" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Apellidos: </label><input type="text" id="ape" name="ape" placeholder="Escribir los 2 apellidos" onkeyup="validarA()" onblur="validarA()">
+                <div id="message3" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Direccion: </label><input type="text" name="dir" onkeyup="validarA()" onblur="validarA()">
+                <div id="message4" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Telefono:  </label><input type="text" id="tel" name="tel" maxlength="10" minlength="7" onkeyup="validarNum()" onblur="validarNum()">
+                <div id="message5" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Fecha de Nacimiento: </label><input type="text" name="fecN">
+                <div id="message6" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Email: </label><input type="text" name="emai">
+                <div id="message7" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+                <br><br>
+                <label>Contraseña: </label><input type="text" name="contra" minlength="8">
+                <div id="message8" style="position: absolute; float: left; background-color:bisque" hidden>
+                    Error en el campo
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    
+</body>
+</html>
