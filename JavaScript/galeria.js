@@ -5,16 +5,16 @@ var aux;   // Auxiliar para configuración.
 var aux_2=0; // Auxiliar para programación.
 // Inicio de variables.
 VFotos = new Array(); // Crea el vector para las fotos.
-VFotos [0] = "../Imagenes/img11.jpg"
-VFotos [1] = "../Imagenes/img12.jpg"
-VFotos [2] = "../Imagenes/img13.jpg"
-VFotos [3] = "../Imagenes/img14.jpg"
-VFotos [4] = "../Imagenes/img15.jpg"
-VFotos [5] = "../Imagenes/img16.jpg"
-VFotos [6] = "../Imagenes/img17.jpg"
-VFotos [7] = "../Imagenes/img18.jpg"
-VFotos [8] = "../Imagenes/img19.jpg"
-VFotos [9] = "../Imagenes/img20.jpg"
+VFotos [0] = "../Imagenes/img1.jpg"
+VFotos [1] = "../Imagenes/img2.jpg"
+VFotos [2] = "../Imagenes/img3.jpg"
+VFotos [3] = "../Imagenes/img4.jpg"
+VFotos [4] = "../Imagenes/img5.jpg"
+VFotos [5] = "../Imagenes/img6.jpg"
+VFotos [6] = "../Imagenes/img7.jpg"
+VFotos [7] = "../Imagenes/img8.jpg"
+VFotos [8] = "../Imagenes/img9.jpg"
+VFotos [9] = "../Imagenes/img10.jpg"
 
 V_max = VFotos.length; // Obtiene la longitud del vector.
 V_max = V_max-1; // Diminuye uno su valor dado que V_max coge un valor a más.
@@ -56,7 +56,29 @@ function aleatorio (){
     }
     setTimeout("aleatorio()",500);
 }
-
+function randomico(){
+    for (var i=1; i<6; i++) {
+        //var aleatorio = Math.floor(Math.random()*11)+1;
+        var aleatorio = Math.ceil(Math.random()*11);
+        VFotos[i]="<img src ='../Imagenes/img"+aleatorio +".jpg' alt='' >";
+        var existe = false;
+        for (var i=0; i<6; i++){
+            if (VFotos [i] == aleatorio){
+                existe =true;
+                break;
+            }
+        }
+        if (!existe) {
+            VFotos[6]=aleatorio;
+            
+        }
+        //aux=aleatorio;
+        console.log('vectorqq: '+aleatorio)
+    }
+    console.log('vectorww: '+ VFotos[aleatorio])
+    Diapositivas.innerHTML=VFotos[1];
+    muestra=1;
+  }
 
 
 
