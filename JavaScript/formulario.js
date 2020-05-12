@@ -1,4 +1,5 @@
 function validacion()
+{
     var ced=false;
     var nom=false;
     var ape=false;
@@ -14,44 +15,43 @@ function validacion()
         //console.log(elemento.value.);
         if(elemento.value == '' && (elemento.type == 'text' || elemento.type == 'password')){    //Si el campo esta vacio
             if(elemento.id == 'ced'){  //Cedula Vacia
-                document.getElementById('dfalla1').innerHTML = 'Campo Cedula esta vacio'; 
+                document.getElementById('mensaje1').innerHTML = 'Campo Cedula esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'nom'){ //Nombre Vacio
-                document.getElementById('dfalla2').innerHTML = 'Campo Nombres esta vacio'; 
+                document.getElementById('mensaje2').innerHTML = 'Campo Nombres esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'ape'){ //Apellido Vacio
-                document.getElementById('dfalla3').innerHTML = 'Campo Apellidos esta vacio'; 
+                document.getElementById('mensaje3').innerHTML = 'Campo Apellidos esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'dir'){ //Direccion Vacio
-                document.getElementById('dfalla4').innerHTML = 'Campo Direccion esta vacio'; 
+                document.getElementById('mensaje4').innerHTML = 'Campo Direccion esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'tel'){ //Telefono Vacio
-                document.getElementById('dfalla5').innerHTML = 'Campo Telefono esta vacio'; 
+                document.getElementById('mensaje5').innerHTML = 'Campo Telefono esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'fecN'){ //Fecha Vacio
-                document.getElementById('dfalla6').innerHTML = 'Campo Fecha esta vacio'; 
+                document.getElementById('mensaje6').innerHTML = 'Campo Fecha esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'correo'){ //Email Vacio
-                document.getElementById('dfalla7').innerHTML = 'Campo Email esta vacio'; 
+                document.getElementById('mensaje7').innerHTML = 'Campo Email esta vacio'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
             if(elemento.id == 'contra'){ //Contrasena Vacio
-                document.getElementById('dfalla8').innerHTML = 'Campo Password esta vacio'; 
+                document.getElementById('mensaje8').innerHTML = 'Campo Password esta vacio'; 
                 elemento.style.border = '2px red solid';
-                console.log("Lalalala");
                 return false;
             }
             return false;
@@ -124,13 +124,13 @@ function validarTelefono(elemento)
         //console.log(miAscii)
         if((miAscii >= 48 && miAscii <= 57)){ //Sean numeros
             //console.log("Es un numero valid")
-            if (elemento.value.length==10) {
-                document.getElementById('dfalla5').innerHTML; 
+            if (elemento.value.length<=10) {
+                document.getElementById('mensaje5').innerHTML=''; 
                 elemento.style.border = '2px greenyellow solid';
                 return true;
             }else {
                 //console.log("Es un numero invalida")
-                document.getElementById('dfalla5').innerHTML = 'Telefono Incorrecto'; 
+                document.getElementById('mensaje5').innerHTML = 'Telefono Incorrecto'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
@@ -158,7 +158,7 @@ function validarCedula(elemento)
         }else{
             elemento.value = elemento.value.substring(0, elemento.value.length-1)
     }
-    if (elemento.value.length <= 10) {
+    if (elemento.value.length == 10) {
         if((elemento.value.substring(0,2)>=1)||(elemento.value.substring(0,2)<=24)){
             //Suma impares
             var pares = 0;
@@ -193,17 +193,17 @@ function validarCedula(elemento)
             //Resta de Sum - Di
             numero = (di - sum);
             if (numero == (elemento.value.substring(9,10))) {
-                document.getElementById('dfalla1').innerHTML ; 
+                document.getElementById('mensaje1').innerHTML='' ; 
                 elemento.style.border = '2px greenyellow solid';
                 return true;
             }else{
-                document.getElementById('dfalla1').innerHTML = 'Cedula es Incorrecta'; 
+                document.getElementById('mensaje1').innerHTML = 'Cedula es Incorrecta'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
         }
     }else{
-        document.getElementById('dfalla1').innerHTML = 'Cedula es Incorrecta'; 
+        document.getElementById('mensaje1').innerHTML = 'Cedula es Incorrecta'; 
                 elemento.style.border = '2px red solid';
                 return false;
     }
@@ -221,28 +221,28 @@ function validarDosOMasCampos(elemento)
                     //console.log("Espacio esta rodeado");
                     if (elemento.id=='nom') {
                         //console.log("Es nombre");
-                        document.getElementById('dfalla2').innerHTML ; 
+                        document.getElementById('mensaje2').innerHTML =''; 
                     }else{
                         
-                        document.getElementById('dfalla3').innerHTML ;
+                        document.getElementById('mensaje3').innerHTML="" ;
                     }
                     elemento.style.border = '2px greenyellow solid';
                     return true;
                 }else{
                     if (elemento.id=='nom') {
-                        document.getElementById('dfalla2').innerHTML = 'Nombres Incorrecto'; 
+                        document.getElementById('mensaje2').innerHTML = 'Nombres Incorrecto'; 
                     }else{
-                        document.getElementById('dfalla3').innerHTML = 'Apellidos Incorrecto';
+                        document.getElementById('mensaje3').innerHTML = 'Apellidos Incorrecto';
                     }
                     elemento.style.border = '2px red solid';
                     return false;
                 }
             }else{
                 if (elemento.id=='nom') {
-                    document.getElementById('dfalla2').innerHTML = 'Nombres Incorrecto';
+                    document.getElementById('mensaje2').innerHTML = 'Nombres Incorrecto';
                     console.log("Es nombre"); 
                 }else{
-                    document.getElementById('dfalla3').innerHTML = 'Apellidos Incorrecto';
+                    document.getElementById('mensaje3').innerHTML = 'Apellidos Incorrecto';
                 }
                 elemento.style.border = '2px red solid';
             }
@@ -259,11 +259,11 @@ function validarFecha(elemento)
         if((miAscii >= 48 && miAscii <= 57 || miAscii == 47)){ //Sean numeros
             //console.log("Es un numero valido")
             if (elemento.value.length==10 && elemento.value.charCodeAt(2)==47 && elemento.value.charCodeAt(5)==47) {
-                document.getElementById('dfalla6').innerHTML ; 
+                document.getElementById('mensaje6').innerHTML ="" ; 
                 elemento.style.border = '2px greenyellow solid';
                 return true;                
             }else {
-                document.getElementById('dfalla6').innerHTML = 'Fecha Incorrecta'; 
+                document.getElementById('mensaje6').innerHTML = 'Fecha Incorrecta'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
@@ -319,16 +319,16 @@ function validarEmail(elemento)
         }
         //UNIMOS CHECKS
         if (checkHost==true && checkServer==true) {
-            document.getElementById('dfalla7').innerHTML 
+            document.getElementById('mensaje7').innerHTML=""; 
             elemento.style.border = '2px greenyellow solid';
             return true;
         } else {
-            document.getElementById('dfalla7').innerHTML = 'Mail Incorrecto'; 
+            document.getElementById('mensaje7').innerHTML = 'Mail Incorrecto'; 
             elemento.style.border = '2px red solid';
             return false;
         }
     }else{
-        document.getElementById('dfalla7').innerHTML = 'Mail Incorrecto'; 
+        document.getElementById('mensaje7').innerHTML = 'Mail Incorrecto'; 
         elemento.style.border = '2px red solid';
         return false;
     }
@@ -352,7 +352,6 @@ function validarPassword(elemento)
                 console.log("Password tiene error!!!!")
                 break;
             }else{
-                console.log("Todo belen Pass")
                 checkPass=true;
             }
         }
@@ -381,23 +380,23 @@ function validarPassword(elemento)
             }
             //Chequeamos que se cumplan todos los requisitos
             if (checkMay==true&&checkMin==true&&checkNum==true&&checkCha==true) {
-                document.getElementById('dfalla8').innerHTML;
+                document.getElementById('mensaje8').innerHTML= '';
                 elemento.style.border = '2px greenyellow solid';
                 return true;
             } else {
-                document.getElementById('dfalla8').innerHTML = 'Minimo 1 de cada Mayus, Minus, Numb y (@,$,_)'; 
+                document.getElementById('mensaje8').innerHTML = 'Minimo 1 de cada Mayus, Minus, Numb y (@,$,_)'; 
                 elemento.style.border = '2px red solid';
                 return false;
             }
 
             
         }else{
-            document.getElementById('dfalla8').innerHTML = 'Puede Utilizar alfanumericos y (@,$,_)'; 
+            document.getElementById('mensaje8').innerHTML = 'Puede Utilizar alfanumericos y (@,$,_)'; 
             elemento.style.border = '2px red solid';
             return false;
         }
     }else{
-        document.getElementById('dfalla8').innerHTML = 'Minimo 8 caracteres'; 
+        document.getElementById('mensaje8').innerHTML = '<p id="falla" class="falla">Minimo 8 caracteres'; 
         elemento.style.border = '2px red solid';
         return false;
     }
