@@ -56,6 +56,7 @@ function aleatorio (){
     }
     setTimeout("aleatorio()",500);
 }
+
 function randomico(){
     for (var i=1; i<6; i++) {
         //var aleatorio = Math.floor(Math.random()*11)+1;
@@ -79,10 +80,7 @@ function randomico(){
     Diapositivas.innerHTML=VFotos[1];
     muestra=1;
   }
-
-
-
-
+  
    /* var limite=6;
     for (var i = 0; i <limite; i++) {
         var azar = Math.floor(Math.random()*(VFotos.length ));

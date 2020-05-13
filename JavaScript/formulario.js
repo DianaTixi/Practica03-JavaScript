@@ -11,8 +11,6 @@ function validacion()
 
     for(var i = 0; i < document.forms[0].elements.length; i++){
         var elemento = document.forms[0].elements[i];
-        //console.log(elemento.value == 'undefined');
-        //console.log(elemento.value.);
         if(elemento.value == '' && (elemento.type == 'text' || elemento.type == 'password')){    //Si el campo esta vacio
             if(elemento.id == 'ced'){  //Cedula Vacia
                 document.getElementById('mensaje1').innerHTML = 'Campo Cedula esta vacio'; 
@@ -81,6 +79,7 @@ function validacion()
                 con=validarPassword(elemento);
             }
         }
+        /*
         console.log("Ced"+ced);
         console.log("Nom"+nom);
         console.log("Ape"+ape);
@@ -88,71 +87,20 @@ function validacion()
         console.log("Fec"+fec);
         console.log("Ema"+ema);
         console.log("Con"+con);
-        
+        */
         if (ced==true&&nom==true&&ape==true&&dir==true&&fec==true&&ema==true&&con==true&&tel==true) {
-            console.log("Esta todo")
+            console.log("Datos")
             return true;
         }
     }
 }
-//VALIDACION DE ENTRY ALFABETICA
-function validarLetras(elemento){
-    if(elemento.value.length > 0){
-        var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
-        //console.log(miAscii)
-        if((miAscii >= 97 && miAscii <= 122)||(miAscii >=65 && miAscii <= 90)||(miAscii == 32)){ //Sean mayusculas y minisculas
-            //console.log("Es una letra valida")
-            if ((elemento.id=='nom')||(elemento.id=='ape')) {
-                //console.log("Entra para irse");
-                return validarDosOMasCampos(elemento);
-            }
-        }else {
-            console.log("Es una letra invalida")
-            elemento.value = elemento.value.substring(0, elemento.value.length-1)
-            return false
-        }
-        }else{
-            
-    }
-
-}
-//VALIDACION DE Telefono
-function validarTelefono(elemento)
-{
-    if(elemento.value.length > 0 && elemento.value.length < 11){
-        var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
-        //console.log(miAscii)
-        if((miAscii >= 48 && miAscii <= 57)){ //Sean numeros
-            //console.log("Es un numero valid")
-            if (elemento.value.length<=10) {
-                document.getElementById('mensaje5').innerHTML=''; 
-                elemento.style.border = '2px greenyellow solid';
-                return true;
-            }else {
-                //console.log("Es un numero invalida")
-                document.getElementById('mensaje5').innerHTML = 'Telefono Incorrecto'; 
-                elemento.style.border = '2px red solid';
-                return false;
-            }
-        }else{
-            elemento.value = elemento.value.substring(0, elemento.value.length-1)
-            return false;
-        }
-    }else{
-        elemento.value = elemento.value.substring(0, elemento.value.length-1)
-        return false;
-    }
-}
-//VERIFICACION DE CEDULA
+//Cedula
 function validarCedula(elemento)
 {  
     if(elemento.value.length > 0 && elemento.value.length < 11){
         var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
-        //console.log(miAscii)
         if((miAscii >= 48 && miAscii <= 57)){
-            //console.log("Es un numero valid")
         }else {
-            //console.log("Es un numero invalida")
             elemento.value = elemento.value.substring(0, elemento.value.length-1)
         }
         }else{
@@ -208,7 +156,28 @@ function validarCedula(elemento)
                 return false;
     }
 }
-//VERIFICACION DE DOS CAMPOS (NOMBRE - APELLIDO)
+//Texto
+function validarLetras(elemento){
+    if(elemento.value.length > 0){
+        var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
+        //console.log(miAscii)
+        if((miAscii >= 97 && miAscii <= 122)||(miAscii >=65 && miAscii <= 90)||(miAscii == 32)){ //Sean mayusculas y minisculas
+            //console.log("Es una letra valida")
+            if ((elemento.id=='nom')||(elemento.id=='ape')) {
+                //console.log("Entra para irse");
+                return validarDosOMasCampos(elemento);
+            }
+        }else {
+            console.log("Es una letra invalida")
+            elemento.value = elemento.value.substring(0, elemento.value.length-1)
+            return false
+        }
+        }else{
+            
+    }
+
+}
+// Dos atributos Nombre - Apellido
 function validarDosOMasCampos(elemento)
 {    
     if(elemento.value.length > 0){
@@ -250,7 +219,35 @@ function validarDosOMasCampos(elemento)
         }
     }
 }
-//VALIDAR FECHAS
+// Telefono
+function validarTelefono(elemento)
+{
+    if(elemento.value.length > 0 && elemento.value.length < 11){
+        var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
+        //console.log(miAscii)
+        if((miAscii >= 48 && miAscii <= 57)){ //Sean numeros
+            //console.log("Es un numero valid")
+            if (elemento.value.length<=10) {
+                document.getElementById('mensaje5').innerHTML=''; 
+                elemento.style.border = '2px greenyellow solid';
+                return true;
+            }else {
+                //console.log("Es un numero invalida")
+                document.getElementById('mensaje5').innerHTML = 'Telefono Incorrecto'; 
+                elemento.style.border = '2px red solid';
+                return false;
+            }
+        }else{
+            elemento.value = elemento.value.substring(0, elemento.value.length-1)
+            return false;
+        }
+    }else{
+        elemento.value = elemento.value.substring(0, elemento.value.length-1)
+        return false;
+    }
+}
+
+//Fecha de Nacimiento
 function validarFecha(elemento)
 {
     if(elemento.value.length > 0 && elemento.value.length < 11){
@@ -276,7 +273,7 @@ function validarFecha(elemento)
         return false;
     }
 }
-//VALIDAR EMAIL
+//Email
 function validarEmail(elemento)
 {
     var posAt=0;
@@ -287,7 +284,6 @@ function validarEmail(elemento)
             posAt=i;
             break;
         }
-        //console.log("Cantidad"+i);
     }
     if(posAt>0){
         var host = elemento.value.substring(0,posAt);
@@ -296,8 +292,6 @@ function validarEmail(elemento)
         if (host.length>=3) {
             for (let i = 0; i < host.length; i++) {
                 var aux = host.charCodeAt(i);
-                //console.log("i="+i)
-                //console.log("Valor de Aux="+aux);
                 if (((aux >= 97 && aux <= 122)||(aux >=65 && aux <= 90)||(aux >=48 && aux <= 57))==false) { //Chequea que host sea alfanumerico
                     checkHost=false;
                     console.log("Host tiene error!!!!")
@@ -333,7 +327,7 @@ function validarEmail(elemento)
         return false;
     }
 }
-//VALIDAR PASSWORD
+//Contraseña
 function validarPassword(elemento)
 {
     var checkPass=false;
